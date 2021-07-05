@@ -3,6 +3,7 @@ lua/
 
 # packer_compiled
 packer_compiled.vim
+packer_compiled.lua
 
 # Compiled Lua sources
 luac.out
@@ -44,5 +45,3 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
-
-

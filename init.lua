@@ -31,5 +31,5 @@ ensure("Olical", "aniseed")
 -- configuration if it's set.
 vim.g["aniseed#env"] = {module = "init", compile = true}
 
--- Now head to fnl/magic/init.fnl to continue your journey.
+-- Now head to fnl/init.fnl to continue your journey.
 -- Try pressing gf on the file path to [g]o to the [f]ile.
