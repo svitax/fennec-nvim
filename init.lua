@@ -1,12 +1,15 @@
--- Entrypoint for my Neovim configuration!
--- We simply bootstrap packer and Aniseed here.
--- It's then up to Aniseed to compile and load fnl/init.fnl
+-- Welcome to your magic kit!
+-- This is the first file Neovim will load.
+-- We'll ensure we have a plugin manager and Aniseed.
+-- This will allow us to load more Fennel based code and download more plugins.
 
+-- Make some modules easier to access.
 local execute = vim.api.nvim_command
 local fn = vim.fn
-
-local pack_path = fn.stdpath("data") .. "/site/pack"
 local fmt = string.format
+
+-- Work out where our plugins will be stored.
+local pack_path = fn.stdpath("data") .. "/site/pack"
 
 function ensure (user, repo)
   -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
@@ -17,12 +20,16 @@ function ensure (user, repo)
   end
 end
 
--- Bootstrap essential plugins required for installing and loading the rest.
+-- Packer is our plugin manager.
 ensure("wbthomason", "packer.nvim")
+
+-- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
-vim.g["aniseed#env"] = {
-  module = "dotfiles.init",
-  compile = true
-}
+-- Aniseed looks for this when it's loaded then loads the rest of your
+-- configuration if it's set.
+vim.g["aniseed#env"] = {module = "init", compile = true}
+
+-- Now head to fnl/magic/init.fnl to continue your journey.
+-- Try pressing gf on the file path to [g]o to the [f]ile.
